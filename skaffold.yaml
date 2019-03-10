@@ -1,0 +1,30 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: changeme
+    context: .
+    docker: {}
+  tagPolicy:
+    envTemplate:
+      template: '{{.DOCKER_REGISTRY}}/webtc/msd-eureka-svr:{{.VERSION}}'
+  local: {}
+deploy:
+  kubectl: {}
+profiles:
+- name: dev
+  build:
+    artifacts:
+    - docker: {}
+    tagPolicy:
+      envTemplate:
+        template: '{{.DOCKER_REGISTRY}}/webtc/msd-eureka-svr:{{.DIGEST_HEX}}'
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: msd-eureka-svr
+        chartPath: charts/msd-eureka-svr
+        setValueTemplates:
+          image.repository: '{{.DOCKER_REGISTRY}}/webtc/msd-eureka-svr'
+          image.tag: '{{.DIGEST_HEX}}'
