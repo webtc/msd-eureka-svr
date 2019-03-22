@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.wtc.msd</groupId>
-	<artifactId>msd-eureka-svr</artifactId>
+	<artifactId>eurekaServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>EurekaServer</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

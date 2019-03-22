@@ -1,4 +1,4 @@
-package com.wtc.msd;
+package com.wtc.msd.eurekaServer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
